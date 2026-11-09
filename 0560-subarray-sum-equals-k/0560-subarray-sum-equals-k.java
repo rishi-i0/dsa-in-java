@@ -7,9 +7,9 @@ class Solution {
         int prefix=0;
         for(int n:nums){
             prefix+=n;
-            int remaining=prefix-k;
-            if(map.containsKey(remaining)){
-                count+=map.get(remaining);
+            // int remaining=prefix-k;
+            if(map.containsKey(prefix-k)){
+                count+=map.get(prefix-k);
             }
             map.put(prefix,map.getOrDefault(prefix,0)+1);
 
