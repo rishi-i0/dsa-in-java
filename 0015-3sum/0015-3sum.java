@@ -10,7 +10,7 @@ class Solution {
         int l=i+1,r=n-1;
       
         while(l<r){
-              long sum=nums[i]+nums[l]+nums[r];
+              int sum=nums[i]+nums[l]+nums[r];
             if(sum==0){
                 res.add(Arrays.asList(nums[i],nums[l],nums[r]));
                 while(l<r && nums[l]==nums[l+1])l++; 
