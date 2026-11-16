@@ -1,7 +1,7 @@
 class Solution {
     public int mySqrt(int x) {
         if(x<2) return x;
-        long left=1;
+        long left=0;
         long right=x/2;
         while(left<=right){
         long mid=left+(right-left)/2;
