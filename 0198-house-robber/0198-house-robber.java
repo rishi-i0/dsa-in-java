@@ -1,19 +1,10 @@
-
-import java.util.*;
-
 class Solution {
     public int rob(int[] nums) {
-
-        int n = nums.length;
-
-        if(n == 0) return 0;
-
-        int[] dp = new int[n];
-
-        // Base case
-        dp[0] = nums[0];
-
-        for(int i = 1; i < n; i++) {
+        int n=nums.length;
+        int dp[]=new int[n];
+        Arrays.fill(dp,-1);
+     dp[0]=nums[0];
+    for(int i = 1; i < n; i++) {
 
             // Pick
             int pick = nums[i];
@@ -27,8 +18,7 @@ class Solution {
 
             // Maximum of both choices
             dp[i] = Math.max(pick, nonPick);
-        }
-
-        return dp[n-1];
+        }return dp[n-1];
+       
     }
 }
