@@ -1,24 +1,38 @@
-class Solution {
-    public int rob(int[] nums) {
-        int n=nums.length;
-        if(n==1) return nums[0];
-        int []dp1=new int[n];
-        int []dp2=new int[n];
-        Arrays.fill(dp1,-1);
-        Arrays.fill(dp2,-1);
-        int case1=f(n-2,nums,0,dp1);
-        int case2=f(n-1,nums,1,dp2);
-        return Math.max(case1,case2);
-        
-    } int f(int ind,int []nums, int start,int []dp){
-        if(ind==start) return nums[ind];
-        if(ind<start) return 0;
-        if(dp[ind]!=-1){
-            return dp[ind];
-        }
-      int  pick=nums[ind]+f(ind-2,nums,start,dp);
-       int  nonPick=f(ind-1,nums,start,dp);
 
-        return dp[ind]=Math.max(pick, nonPick);
+class Solution {
+
+    public int rob(int[] nums) {
+
+        int n = nums.length;
+
+        if (n == 1) return nums[0];
+
+        int case1 = robLinear(nums, 0, n - 2);
+
+        int case2 = robLinear(nums, 1, n - 1);
+
+        return Math.max(case1, case2);
+    }
+
+    int robLinear(int[] nums, int start, int end) {
+
+        int[] dp = new int[nums.length];
+
+        dp[start] = nums[start];
+
+        for (int i = start + 1; i <= end; i++) {
+
+            int pick = nums[i];
+
+            if (i > start + 1) {
+                pick += dp[i - 2];
+            }
+
+            int nonPick = dp[i - 1];
+
+            dp[i] = Math.max(pick, nonPick);
+        }
+
+        return dp[end];
     }
 }
